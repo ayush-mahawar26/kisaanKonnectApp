@@ -6,9 +6,19 @@ import 'package:http/http.dart';
 import 'package:kisaan_konnect/bloc/states/auth.state.dart';
 import 'package:kisaan_konnect/services/auth.service.dart';
 import 'package:kisaan_konnect/utils/reg_check.dart';
+import 'package:kisaan_konnect/utils/shared_pref.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(InitialAuthState());
+
+  void getUser(String token) async {
+    emit(LoadingAuthState());
+    try {
+      String? token = await SharedPrefService().getData('token');
+    } catch (e) {
+      emit(ErrorAuthState(err: "unable to get user from token"));
+    }
+  }
 
   void signupUser(String fullName, String email, String pass) async {
     emit(LoadingAuthState());

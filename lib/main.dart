@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kisaan_konnect/bloc/cubit/auth.cubit.dart';
+import 'package:kisaan_konnect/bloc/cubit/cart.cubit.dart';
 import 'package:kisaan_konnect/bloc/cubit/product.cubit.dart';
+import 'package:kisaan_konnect/bloc/cubit/quantity.cubit.dart';
 import 'package:kisaan_konnect/constants/app.theme.dart';
 import 'package:kisaan_konnect/constants/size.config.dart';
 import 'package:kisaan_konnect/utils/shared_pref.dart';
@@ -23,6 +25,8 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(create: (context) => ProductCubit()),
           BlocProvider(create: (context) => AuthCubit()),
+          BlocProvider(create: (context) => QuantityCubit()),
+          BlocProvider(create: (context) => CartCubit()),
         ],
         child: MaterialApp(
           title: 'KisaanKonnect',

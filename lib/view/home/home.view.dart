@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kisaan_konnect/constants/colors.dart';
 import 'package:kisaan_konnect/constants/size.config.dart';
+import 'package:kisaan_konnect/services/cart.service.dart';
 import 'package:kisaan_konnect/utils/shared_pref.dart';
 import 'package:kisaan_konnect/utils/snackbar.dart';
 import 'package:kisaan_konnect/view/auth_view/signup.view.dart';
@@ -10,6 +11,7 @@ import 'package:kisaan_konnect/view/home/aboutus.view.dart';
 import 'package:kisaan_konnect/view/home/awareness.view.dart';
 import 'package:kisaan_konnect/view/home/market.place.dart';
 import 'package:kisaan_konnect/view/home/services.view.dart';
+import 'package:kisaan_konnect/view/widgets/custom_appbar.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -32,47 +34,50 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 16.0),
-            child: InkWell(
-              onTap: () async {
-                bool removed = await SharedPrefService().removeKey('token');
-                if (removed) {
-                  Navigator.of(context).pushAndRemoveUntil(
-                      MaterialPageRoute(
-                          builder: (context) => const SignupView()),
-                      (Route<dynamic> route) => false);
-                } else {
-                  ShowSnackBar(context, 'Error in logout', Colors.red);
-                }
-              },
-              child: const Icon(
-                Icons.exit_to_app,
-                color: AppColors.white,
+      appBar: (selectedIndex == 3)
+          ? CustomAppbar().marketPlaceAppBar(context)
+          : AppBar(
+              actions: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 16.0),
+                  child: InkWell(
+                    onTap: () async {
+                      bool removed =
+                          await SharedPrefService().removeKey('token');
+                      if (removed) {
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                                builder: (context) => const SignupView()),
+                            (Route<dynamic> route) => false);
+                      } else {
+                        ShowSnackBar(context, 'Error in logout', Colors.red);
+                      }
+                    },
+                    child: const Icon(
+                      Icons.exit_to_app,
+                      color: AppColors.white,
+                    ),
+                  ),
+                )
+              ],
+              leading: IconButton(
+                icon: SvgPicture.asset(
+                  "assets/hamburger.svg",
+                  color: AppColors.white,
+                ),
+                onPressed: () {
+                  _scaffoldKey.currentState!.openDrawer();
+                },
               ),
+              title: Text(
+                "Kissan Konnect",
+                style: Theme.of(context)
+                    .textTheme
+                    .bodySmall!
+                    .copyWith(color: AppColors.white),
+              ),
+              backgroundColor: AppColors.accentMain,
             ),
-          )
-        ],
-        leading: IconButton(
-          icon: SvgPicture.asset(
-            "assets/hamburger.svg",
-            color: AppColors.white,
-          ),
-          onPressed: () {
-            _scaffoldKey.currentState!.openDrawer();
-          },
-        ),
-        title: Text(
-          "Kissan Konnect",
-          style: Theme.of(context)
-              .textTheme
-              .bodySmall!
-              .copyWith(color: AppColors.white),
-        ),
-        backgroundColor: AppColors.accentMain,
-      ),
       drawer: Drawer(
         child: SafeArea(
           child: ListView(

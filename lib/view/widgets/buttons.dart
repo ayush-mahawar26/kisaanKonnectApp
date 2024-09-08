@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:kisaan_konnect/constants/colors.dart';
 
 class CustomButtons {
@@ -20,6 +21,17 @@ class CustomButtons {
             ),
           )),
     );
+  }
+
+  Widget customIconButton(Icon icon, Function function, double borderRadius) {
+    return ElevatedButton(
+        style: ButtonStyle(
+            foregroundColor: WidgetStateProperty.all(AppColors.white),
+            backgroundColor: WidgetStateProperty.all(AppColors.accentMain),
+            shape: WidgetStateProperty.all(RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(borderRadius)))),
+        onPressed: () => function(),
+        child: icon);
   }
 
   Widget loadingElevatedButton(double borderRadius) {

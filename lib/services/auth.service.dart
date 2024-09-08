@@ -6,6 +6,17 @@ import 'package:http/http.dart';
 import 'package:kisaan_konnect/constants/global.constants.dart';
 
 class AuthService {
+  Future<Response> getUserByToken(String token) async {
+    Response res = await get(
+      Uri.parse('${GlobalConstants.url}/user/token'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': 'Bearer $token'
+      },
+    );
+    return res;
+  }
+
   Future<Response?> signupUser(
       String fullName, String email, String pass) async {
     try {

@@ -4,6 +4,7 @@ import 'package:kisaan_konnect/bloc/cubit/product.cubit.dart';
 import 'package:kisaan_konnect/bloc/states/product.state.dart';
 import 'package:kisaan_konnect/constants/colors.dart';
 import 'package:kisaan_konnect/models/marketplace.item.model.dart';
+import 'package:kisaan_konnect/view/home/product.view.dart';
 import 'package:kisaan_konnect/view/widgets/items.widget.dart';
 
 class MarketPlaceView extends StatelessWidget {
@@ -46,8 +47,16 @@ class MarketPlaceView extends StatelessWidget {
                               physics:
                                   const NeverScrollableScrollPhysics(), // Disable inner scrolling
                               itemBuilder: (context, index) {
-                                return MarketItemWidget(
-                                    marketItem: items[index]);
+                                return InkWell(
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) => ProductView(
+                                                item: items[index])));
+                                  },
+                                  child: MarketItemWidget(
+                                      marketItem: items[index]),
+                                );
                               },
                             ),
                           ],

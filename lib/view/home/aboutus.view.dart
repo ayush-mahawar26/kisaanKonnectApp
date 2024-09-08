@@ -20,11 +20,11 @@ class AboutUsView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Agriculture & Organic Product Farm",
+                  "Empowering Farmers & Promoting Sustainable Agriculture",
                   style: Theme.of(context).textTheme.bodyLarge!.copyWith(),
                 ),
                 Text(
-                  "Agrios is the largest global organic farm.",
+                  "Kisaan Konnect is your gateway to modern farming solutions.",
                   style: Theme.of(context).textTheme.bodySmall!.copyWith(
                       fontWeight: FontWeight.bold, color: AppColors.accentMain),
                 ),
@@ -32,15 +32,16 @@ class AboutUsView extends StatelessWidget {
                   height: 16,
                 ),
                 Text(
-                  "There are many variations of passages of lorem ipsum available but the majority have suffered alteration in some form by injected humor or random word which don't look even.",
+                  "We are committed to connecting farmers with the latest innovations in sustainable farming, organic products, and agricultural support. Whether you're looking to boost productivity, access financial subsidies, or connect with markets, Kisaan Konnect is here to help.",
                   style: Theme.of(context).textTheme.bodySmall!.copyWith(),
                 ),
                 const SizedBox(
                   height: 16,
                 ),
-                checkWidget(context, " Lorem Ipsum is not simply random text."),
                 checkWidget(context,
-                    " Making this the first true generator on the internet."),
+                    " Access to the latest agricultural technologies and market insights."),
+                checkWidget(context,
+                    " Dedicated support for small and large-scale farmers alike."),
               ],
             ),
           ),
