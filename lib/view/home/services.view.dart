@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kisaan_konnect/view/home/predicting/predict.fertilizer.dart';
 import 'package:kisaan_konnect/view/widgets/service.card.dart';
 
 class ServiceView extends StatelessWidget {
@@ -32,12 +33,18 @@ class ServiceView extends StatelessWidget {
                 "Get recommendations on the best crops to grow based on soil, weather, and market demand.",
                 "assets/image.png",
                 "assets/crop.svg"),
-            serviceCard(
-                context,
-                "Fertilizer Prediction",
-                "Receive personalized fertilizer recommendations to optimize crop growth and reduce costs.",
-                "assets/image.png",
-                "assets/crop.svg")
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const PredictFertilizerView()));
+              },
+              child: serviceCard(
+                  context,
+                  "Fertilizer Prediction",
+                  "Receive personalized fertilizer recommendations to optimize crop growth and reduce costs.",
+                  "assets/image.png",
+                  "assets/crop.svg"),
+            )
           ],
         ),
       ),

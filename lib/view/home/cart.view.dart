@@ -5,6 +5,7 @@ import 'package:http/retry.dart';
 import 'package:kisaan_konnect/bloc/cubit/cart.cubit.dart';
 import 'package:kisaan_konnect/bloc/states/cart.state.dart';
 import 'package:kisaan_konnect/constants/colors.dart';
+import 'package:kisaan_konnect/constants/size.config.dart';
 import 'package:kisaan_konnect/utils/snackbar.dart';
 
 class CartView extends StatefulWidget {
@@ -54,19 +55,30 @@ class _CartViewState extends State<CartView> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(cartCubit.cartItems[index].name),
-                                  Text(
-                                    "Quantity : ${cartCubit.cartItems[index].quantity}",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodySmall!
-                                        .copyWith(
-                                            color: AppColors.secondaryText),
-                                  ),
-                                ],
+                              SizedBox(
+                                width: AppSizeConfig.screenWidth * 0.4,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      cartCubit.cartItems[index].name,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodySmall!
+                                          .copyWith(
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                    ),
+                                    Text(
+                                      "Quantity : ${cartCubit.cartItems[index].quantity}",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodySmall!
+                                          .copyWith(
+                                              color: AppColors.secondaryText),
+                                    ),
+                                  ],
+                                ),
                               ),
                               Text(
                                 "₹ ${cartCubit.cartItems[index].price.toString()}",

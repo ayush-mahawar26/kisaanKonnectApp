@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kisaan_konnect/constants/colors.dart';
+import 'package:kisaan_konnect/constants/size.config.dart';
 import 'package:kisaan_konnect/models/marketplace.item.model.dart';
 
 class MarketItemWidget extends StatelessWidget {
@@ -20,9 +21,9 @@ class MarketItemWidget extends StatelessWidget {
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(8),
                       bottomLeft: Radius.circular(8)),
-                  child: Image.asset(
+                  child: Image.network(
                     fit: BoxFit.cover,
-                    'assets/image.png',
+                    marketItem.imageUrl,
                     height: 80,
                     width: 80,
                   ),
@@ -33,9 +34,13 @@ class MarketItemWidget extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      marketItem.name,
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(),
+                    SizedBox(
+                      width: 200,
+                      child: Text(
+                        marketItem.name,
+                        style:
+                            Theme.of(context).textTheme.bodySmall!.copyWith(),
+                      ),
                     ),
                     Row(
                       children: [
@@ -57,9 +62,11 @@ class MarketItemWidget extends StatelessWidget {
                 ),
               ],
             ),
-            Text(
-              "₹ ${marketItem.price}  >",
-              style: Theme.of(context).textTheme.bodySmall!.copyWith(),
+            SizedBox(
+              child: Text(
+                "₹ ${marketItem.price}  >",
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(),
+              ),
             )
           ],
         ),

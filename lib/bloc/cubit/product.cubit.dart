@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kisaan_konnect/bloc/states/product.state.dart';
 import 'package:kisaan_konnect/models/marketplace.item.model.dart';
@@ -14,9 +15,11 @@ class ProductCubit extends Cubit<ProductState> {
     emit(LoadingProductState());
     try {
       items = await ProductService().getItems();
+      print(items);
       emit(DoneProductState());
     } catch (e) {
-      emit(ErrorProductState(err: "Error Occured"));
+      print(e);
+      emit(ErrorProductState(err: e.toString()));
     }
   }
 }

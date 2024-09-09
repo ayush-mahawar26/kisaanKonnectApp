@@ -16,6 +16,7 @@ class CartService {
       Response? userRes = await AuthService().getUserByToken(usertoken);
       Map<String, dynamic> user = await jsonDecode(userRes.body);
       String userId = user["user"]["_id"];
+      print(userId);
 
       //getting cart
       Response cartRes =
@@ -40,19 +41,16 @@ class CartService {
       'userId': userId,
       "productId": item.id,
       "quantity": quantity,
+      "imageUrl": item.imageUrl,
       "name": item.name
     };
 
     print(body);
 
-    Response cartRes =
-        await post(Uri.parse('${GlobalConstants.url}/add-to-cart'),
-            headers: {
-              "Content-type": "application/json",
-              "Accept": "application/json",
-              "Access-Control-Allow-Origin": "*"
-            },
-            body: json.encode(body));
+    Response cartRes = await post(
+        Uri.parse('${GlobalConstants.url}/add-to-cart'),
+        headers: GlobalConstants.header,
+        body: json.encode(body));
     print('here');
 
     print(cartRes.body);

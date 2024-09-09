@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kisaan_konnect/bloc/cubit/cart.cubit.dart';
 import 'package:kisaan_konnect/bloc/cubit/product.cubit.dart';
@@ -28,7 +29,7 @@ class ProductView extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Image(image: AssetImage("assets/image.png")),
+                Image(image: NetworkImage(item.imageUrl)),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 8),

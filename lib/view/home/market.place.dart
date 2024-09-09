@@ -69,7 +69,7 @@ class MarketPlaceView extends StatelessWidget {
                 if (state is ErrorProductState) {
                   return Center(
                     child: Text(
-                      'Error Occured',
+                      state.err,
                       style: Theme.of(context)
                           .textTheme
                           .bodyMedium!
