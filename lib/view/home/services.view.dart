@@ -25,13 +25,13 @@ class ServiceView extends StatelessWidget {
                 context,
                 "Crop Disease Prediction",
                 "Predict potential crop diseases early to prevent crop loss and increase yield.",
-                "assets/image.png",
+                "assets/CropDiseaseImage.png",
                 "assets/crop.svg"),
             serviceCard(
                 context,
                 "What Crop to Grow",
                 "Get recommendations on the best crops to grow based on soil, weather, and market demand.",
-                "assets/image.png",
+                "assets/crop.jpg",
                 "assets/crop.svg"),
             InkWell(
               onTap: () {
@@ -42,7 +42,7 @@ class ServiceView extends StatelessWidget {
                   context,
                   "Fertilizer Prediction",
                   "Receive personalized fertilizer recommendations to optimize crop growth and reduce costs.",
-                  "assets/image.png",
+                  "assets/fert.jpg",
                   "assets/crop.svg"),
             )
           ],
